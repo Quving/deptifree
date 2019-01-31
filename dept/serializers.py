@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from .models import OneToOneDept, OneToManyDept, Dept
+from dept.models import OneToOneDept, OneToManyDept, Dept
 
 
 class DeptSerializer(serializers.ModelSerializer):
