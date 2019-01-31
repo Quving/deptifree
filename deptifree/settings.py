@@ -36,7 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'core.apps.CoreConfig'
+    'dept.apps.DeptConfig',
+    'user.apps.UserConfig'
+
 ]
 
 MIDDLEWARE = [
@@ -80,6 +82,13 @@ DATABASES = {
         'PASSWORD': os.getenv("DEPTIFREE_MYSQL_PASSWORD", "supersafepw"),
         'HOST': os.getenv("DEPTIFREE_MYSQL_HOST", "localhost"),
         'PORT': os.getenv("DEPTIFREE_MYSQL_PORT", "3306")
+    }
+}
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
