@@ -36,10 +36,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'rest_framework_swagger',
     'dept.apps.DeptConfig',
-    'user.apps.UserConfig'
-
+    'user.apps.UserConfig',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
 ]
+
+SITE_ID = 1
+
+AUTH_USER_MODEL = 'user.ApplicationUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,16 +84,16 @@ WSGI_APPLICATION = 'deptifree.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv("DEPTIFREE_MYSQL_DB", "deptifree"),
-        'USER': os.getenv("DEPTIFREE_MYSQL_USER", "userfoo"),
-        'PASSWORD': os.getenv("DEPTIFREE_MYSQL_PASSWORD", "supersafepw"),
-        'HOST': os.getenv("DEPTIFREE_MYSQL_HOST", "localhost"),
-        'PORT': os.getenv("DEPTIFREE_MYSQL_PORT", "3306")
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.getenv("DEPTIFREE_MYSQL_DB", "deptifree"),
+#         'USER': os.getenv("DEPTIFREE_MYSQL_USER", "userfoo"),
+#         'PASSWORD': os.getenv("DEPTIFREE_MYSQL_PASSWORD", "supersafepw"),
+#         'HOST': os.getenv("DEPTIFREE_MYSQL_HOST", "localhost"),
+#         'PORT': os.getenv("DEPTIFREE_MYSQL_PORT", "3306")
+#     }
+# }
 
 DATABASES = {
     'default': {

@@ -1,47 +1,38 @@
 # Create your views here.
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from rest_framework import generics, permissions
 
-from dept.models import OneToManyDept, OneToOneDept
+from dept.models import ComplexDept, SimpleDept
 from dept.permissions import IsOwnerOrReadOnly
-from dept.serializers import OneToOneDeptSerializer, OneToManyDeptSerializer
-from dept.serializers import UserSerializer
+from dept.serializers import SimpleDeptSerializer, ComplexDeptSerializer
+
+User = get_user_model()
 
 
-class OneToOneDeptList(generics.ListCreateAPIView):
-	queryset = OneToOneDept.objects.all()
-	serializer_class = OneToOneDeptSerializer
-	permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+class SimpleDeptList(generics.ListCreateAPIView):
+    queryset = SimpleDept.objects.all()
+    serializer_class = SimpleDeptSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
-	def perform_create(self, serializer):
-		serializer.save(owner=self.request.user)
-
-
-class OneToOneDeptDetail(generics.RetrieveUpdateDestroyAPIView):
-	queryset = OneToOneDept.objects.all()
-	serializer_class = OneToOneDeptSerializer
-	permission_classes = (permissions.IsAuthenticatedOrReadOnly,
-	                      IsOwnerOrReadOnly,)
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
-class UserList(generics.ListAPIView):
-	queryset = User.objects.all()
-	serializer_class = UserSerializer
+class SimpleDeptDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = SimpleDept.objects.all()
+    serializer_class = SimpleDeptSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly,)
 
 
-class UserDetail(generics.RetrieveAPIView):
-	queryset = User.objects.all()
-	serializer_class = UserSerializer
+class ComplexDeptList(generics.ListCreateAPIView):
+    queryset = ComplexDept.objects.all()
+    serializer_class = ComplexDeptSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
-class OneToManyDeptList(generics.ListCreateAPIView):
-	queryset = OneToManyDept.objects.all()
-	serializer_class = OneToManyDeptSerializer
-	permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-
-
-class OneToManyDeptDetail(generics.RetrieveUpdateDestroyAPIView):
-	queryset = OneToManyDept.objects.all()
-	serializer_class = OneToManyDeptSerializer
-	permission_classes = (permissions.IsAuthenticatedOrReadOnly,
-	                      IsOwnerOrReadOnly,)
+class ComplexDeptDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ComplexDept.objects.all()
+    serializer_class = ComplexDeptSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly,)

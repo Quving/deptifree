@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title='Deptifree API')
 
 urlpatterns = [
+    path('rest-auth/', include('rest_auth.urls')),
+    path('rest-auth/registration/', include('rest_auth.registration.urls')),
+    path('docs/swagger', schema_view),
     path('admin/', admin.site.urls),
-    path('', include('dept.urls')),
-
-]
+    path('dept/', include('dept.urls')),
+    path('user/', include('user.urls')), ]

@@ -1,34 +1,25 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from dept.models import OneToOneDept, OneToManyDept, Dept
+from dept.models import SimpleDept, ComplexDept, Dept
 
 
 class DeptSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+
     class Meta:
         model = Dept
         fields = ('name', 'purpose', 'value', 'field', 'paid', 'creator')
 
 
-class OneToOneDeptSerializer(DeptSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username')
-
+class SimpleDeptSerializer(DeptSerializer):
     class Meta:
-        model = OneToOneDept
+        model = SimpleDept
         fields = ('sender', 'receiver')
 
 
-class OneToManyDeptSerializer(DeptSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username')
-
+class ComplexDeptSerializer(DeptSerializer):
     class Meta:
-        model = OneToManyDept
+        model = ComplexDept
         fields = ('sender', 'receiver')
 
-
-class UserSerializer(serializers.ModelSerializer):
-    depts = serializers.PrimaryKeyRelatedField(many=True, queryset=Dept.objects.all())
-
-    class Meta:
-        model = User
-        fields = ('id', 'username', 'depts')
