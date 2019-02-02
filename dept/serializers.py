@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from rest_framework import serializers
 
 from dept.models import SimpleDept, ComplexDept, Dept
@@ -9,17 +8,20 @@ class DeptSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Dept
-        fields = ('name', 'purpose', 'value', 'field', 'paid', 'creator')
+        fields = ('name', 'purpose', 'value', 'field', 'paid', 'owner')
 
 
 class SimpleDeptSerializer(DeptSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+
     class Meta:
         model = SimpleDept
-        fields = ('sender', 'receiver')
+        fields = '__all__'
 
 
 class ComplexDeptSerializer(DeptSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+
     class Meta:
         model = ComplexDept
-        fields = ('sender', 'receiver')
-
+        fields = '__all__'

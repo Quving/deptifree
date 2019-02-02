@@ -7,6 +7,7 @@ User = get_user_model()
 
 
 class Dept(models.Model):
+    owner = models.ForeignKey(User, related_name='depts', on_delete=models.CASCADE, default=0)
     created = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=100,
                             blank=True,
@@ -14,11 +15,8 @@ class Dept(models.Model):
     purpose = models.TextField(max_length=100,
                                blank=True,
                                default='')
-    value = models.IntegerField(default=0)
+    value = models.FloatField(default=0)
     paid = models.BooleanField(default=False)
-    creator = models.ForeignKey(User,
-                                related_name='%(class)s_creator',
-                                on_delete=models.CASCADE, )
 
 
 class ComplexDept(Dept):
