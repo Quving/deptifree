@@ -26,7 +26,7 @@ services:
         name: EMAIL_HOST_USER
         type: env
       - secret: DEPTIFREE_EMAIL_PORT
-        name: EMAIL_HOST_PORT
+        name: EMAIL_PORT
         type: env
       - secret: DEPTIFREE_MYSQL_DB
         name: MYSQL_DB
