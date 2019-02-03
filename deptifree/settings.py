@@ -84,23 +84,23 @@ WSGI_APPLICATION = 'deptifree.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': os.getenv("DEPTIFREE_MYSQL_DB", "deptifree"),
-#         'USER': os.getenv("DEPTIFREE_MYSQL_USER", "userfoo"),
-#         'PASSWORD': os.getenv("DEPTIFREE_MYSQL_PASSWORD", "supersafepw"),
-#         'HOST': os.getenv("DEPTIFREE_MYSQL_HOST", "localhost"),
-#         'PORT': os.getenv("DEPTIFREE_MYSQL_PORT", "3306")
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv("MYSQL_DB", "deptifree"),
+        'USER': os.getenv("MYSQL_USER", "userfoo"),
+        'PASSWORD': os.getenv("MYSQL_PASSWORD", "supersafepw"),
+        'HOST': os.getenv("MYSQL_HOST", "localhost"),
+        'PORT': int(os.getenv("MYSQL_PORT", "3306"))
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
