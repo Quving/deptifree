@@ -38,9 +38,9 @@ services:
         name: MYSQL_USER
         type: env
       - secret: DEPTIFREE_MYSQL_PASSWORD
-        name: MYSQL_DB_PASSWORD
+        name: MYSQL_PASSWORD
         type: env
       - secret: DEPTIFREE_MYSQL_PORT
-        name: MYSQL_DB_PORT
+        name: MYSQL_PORT
         type: env
 
