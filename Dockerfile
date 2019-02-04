@@ -4,4 +4,4 @@ WORKDIR /app
 ADD . .
 RUN pip install -r requirements.txt
 
-CMD ["python", "manage.py", "runserver"]
+CMD ["gunicorn", "--bind", "0.0.0.0:7500", "deptifree.wsgi"]
