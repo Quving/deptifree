@@ -4,4 +4,6 @@ WORKDIR /app
 ADD . .
 RUN pip install -r requirements.txt
 
+RUN python manage.py collectstatic
+
 CMD ["gunicorn", "--bind", "0.0.0.0:7500", "deptifree.wsgi"]
