@@ -3,7 +3,7 @@ FROM python:3.6
 WORKDIR /app
 ADD . .
 RUN pip install -r requirements.txt
+RUN chmod +x entrypoint.sh
 
-RUN python manage.py collectstatic
-
-CMD ["gunicorn", "--bind", "0.0.0.0:7500", "deptifree.wsgi"]
+EXPOSE 7500
+CMD ["./entrypoint.sh"]
