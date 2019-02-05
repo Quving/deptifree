@@ -24,7 +24,7 @@ SECRET_KEY = '$g_k-yc##-^ok#xcqjk_tf70bm$rl&v-p!)js-rb_(#olmftdq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["0.0.0.0", "localhost"]
+ALLOWED_HOSTS = ["localhost", os.getenv("ALLOWED_HOST")]
 
 # Application definition
 
