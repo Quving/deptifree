@@ -1,7 +1,6 @@
 # Create your views here.
-from rest_framework import generics
+from rest_framework import generics, permissions
 
-from contactlist import permissions
 from contactlist.models import ContactList
 from contactlist.permissions import IsOwnerOrReadOnly
 from contactlist.serializers import ContactListSerializer
