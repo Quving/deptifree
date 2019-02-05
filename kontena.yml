@@ -11,8 +11,8 @@ services:
     environment:
       - KONTENA_LB_VIRTUAL_HOSTS=api.deptifree.quving.com
       - KONTENA_LB_INTERNAL_PORT=7500
+      - KONTENA_LB_CUSTOM_SETTINGS=redirect scheme https if !{ ssl_fc }
       - ALLOWED_HOST=api.deptifree.quving.com
-        # - KONTENA_LB_CUSTOM_SETTINGS=redirect scheme https if !{ ssl_fc }
     secrets:
       - secret: DEPTIFREE_DEFAULT_FROM_EMAIL
         name: DEFAULT_FROM_EMAIL
