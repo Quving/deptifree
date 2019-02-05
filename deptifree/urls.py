@@ -20,8 +20,8 @@ from rest_framework_swagger.views import get_swagger_view
 schema_view = get_swagger_view(title='Deptifree API')
 
 urlpatterns = [
-    path('rest-auth/', include('rest_auth.urls')),
-    path('rest-auth/registration/', include('rest_auth.registration.urls')),
+    path('account/', include('rest_auth.urls')),
+    path('account/registration/', include('rest_auth.registration.urls')),
     path('docs/swagger', schema_view),
     path('admin/', admin.site.urls),
     path('contactlist/', include('contactlist.urls')),
