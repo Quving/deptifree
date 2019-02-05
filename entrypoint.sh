@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 python manage.py collectstatic
-gunicorn --bind 0.0.0.0:7500 deptifree.wsgi
+gunicorn -c gunicorn_conf.py deptifree.wsgi
