@@ -11,6 +11,7 @@ pipeline:
     image: pingu/drone-plugin-kontena:latest
     secrets: [ kontena_token, kontena_url, kontena_grid ]
     kontena_stack: deptifree
+    kontena_file: scripts/production/kontena.yml
     when:
       status: [ success ]
       branch: [ master ]
