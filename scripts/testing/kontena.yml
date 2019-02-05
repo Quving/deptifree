@@ -1,0 +1,47 @@
+---
+stack: vngu/deptifree
+version: '0.0.1'
+description: deptifree
+services:
+  api:
+    image: pingu/deptifree:latest
+    links:
+      - system/lb
+    instances: 1
+    environment:
+      - KONTENA_LB_VIRTUAL_HOSTS=api.deptifree.quving.com
+      - KONTENA_LB_INTERNAL_PORT=7500
+      # - KONTENA_LB_CUSTOM_SETTINGS=redirect scheme https if !{ ssl_fc }
+      - ALLOWED_HOST=api.deptifree.quving.com
+    secrets:
+      - secret: DEPTIFREE_DEFAULT_FROM_EMAIL
+        name: DEFAULT_FROM_EMAIL
+        type: env
+      - secret: DEPTIFREE_EMAIL_HOST
+        name: EMAIL_HOST
+        type: env
+      - secret: DEPTIFREE_EMAIL_HOST_PASSWORD
+        name: EMAIL_HOST_PASSWORD
+        type: env
+      - secret: DEPTIFREE_EMAIL_HOST_USER
+        name: EMAIL_HOST_USER
+        type: env
+      - secret: DEPTIFREE_EMAIL_PORT
+        name: EMAIL_PORT
+        type: env
+      - secret: DEPTIFREE_MYSQL_DB
+        name: MYSQL_DB
+        type: env
+      - secret: DEPTIFREE_MYSQL_HOST
+        name: MYSQL_HOST
+        type: env
+      - secret: DEPTIFREE_MYSQL_USER
+        name: MYSQL_USER
+        type: env
+      - secret: DEPTIFREE_MYSQL_PASSWORD
+        name: MYSQL_PASSWORD
+        type: env
+      - secret: DEPTIFREE_MYSQL_PORT
+        name: MYSQL_PORT
+        type: env
+
