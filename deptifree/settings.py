@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'dept.apps.DeptConfig',
     'user.apps.UserConfig',
+    'contactlist.apps.ContactlistConfig',
     'django.contrib.sites',
     'allauth',
     'allauth.account',

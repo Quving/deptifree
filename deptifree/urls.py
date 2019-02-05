@@ -24,5 +24,6 @@ urlpatterns = [
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('docs/swagger', schema_view),
     path('admin/', admin.site.urls),
+    path('contactlist/', include('contactlist.urls')),
     path('dept/', include('dept.urls')),
     path('user/', include('user.urls')), ]
