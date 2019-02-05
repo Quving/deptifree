@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
-python manage.py collectstatic
-gunicorn -c gunicorn_conf.py deptifree.wsgi
+echo 'yes' | python manage.py collectstatic --clear
+gunicorn -c gunicorn_config.py deptifree.wsgi
